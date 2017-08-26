@@ -22,12 +22,11 @@ if compiler.links('__thread int foo;main(){}', name: 'thread locals')
 endif
 
 # a reasonable assumption for the moment
-add_project_arguments('-DINLINE=inline', '-DINLINE_LEVEL=' + get_option('inline_level'), language: 'c')
+add_project_arguments('-DINLINE_LEVEL=' + get_option('inline_level'), language: 'c')
 
 # should add some way to override this
-if compiler.sizeof('long') == 8
-    add_project_arguments('-DSOFTFLOAT_FAST_INT64', language: 'c')
-endif
+fast_int64 = compiler.sizeof('long') == 8
+
 add_project_arguments('-DSOFTFLOAT_FAST_DIV64TO32', '-DSOFTFLOAT_FAST_DIV32TO16', language: 'c')
 if get_option('round_odd')
     add_project_arguments('-DSOFTFLOAT_ROUND_ODD', language: 'c')

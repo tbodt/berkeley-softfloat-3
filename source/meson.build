@@ -311,3 +311,5 @@ src_other = [
 ]
 
 src = files(src_primitives + src_specialize + src_other)
+
+subdir('include') # generate platform.h
