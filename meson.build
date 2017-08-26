@@ -38,4 +38,4 @@ subdir('source')
 libsoftfloat = library('softfloat', src, include_directories: includes)
 
 export_includes = include_directories('source/include')
-softfloat_dep = declare_dependendency(link_with: libsoftfloat, include_directories: export_includes)
+softfloat_dep = declare_dependency(link_with: libsoftfloat, include_directories: export_includes)
