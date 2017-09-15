@@ -1,0 +1,6 @@
+conf = configuration_data()
+conf.set('INLINE', 'inline')
+conf.set('LITTLEENDIAN', littleendian)
+conf.set('SOFTFLOAT_FAST_INT64', fast_int64)
+conf.set('THREAD_LOCAL', thread_local)
+configure_file(output: 'platform.h', configuration: conf)

@@ -12,13 +12,12 @@ int main() {
     return *(char *) &x == 1;
 }
 ''', name: 'endian')
-if result.returncode() == 1
-    add_project_arguments('-DLITTLEENDIAN', language: 'c')
-endif
+littleendian = result.returncode() == 1
 
 # thread local syntax
+thread_local = ''
 if compiler.links('__thread int foo;main(){}', name: 'thread locals')
-    add_project_arguments('-DTHREAD_LOCAL=__thread', language: 'c')
+    thread_local = '__thread'
 endif
 
 # a reasonable assumption for the moment
