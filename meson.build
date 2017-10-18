@@ -5,15 +5,6 @@ specialize_type = get_option('specialize_type')
 
 compiler = meson.get_compiler('c')
 
-# check endian
-result = compiler.run('''
-int main() {
-    int x = 1;
-    return *(char *) &x == 1;
-}
-''', name: 'endian')
-littleendian = result.returncode() == 1
-
 # thread local syntax
 thread_local = ''
 if compiler.links('__thread int foo;main(){}', name: 'thread locals')
